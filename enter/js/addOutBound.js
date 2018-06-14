@@ -12,6 +12,7 @@ window.onload = function() {
 	$("button").click(function() {
 		save()
 	})
+<<<<<<< HEAD
 	$.ajax({
 		type: "get",
 		url: "http://172.18.0.10:8083/erchu/appWarehouse/getWarehouses",
@@ -26,6 +27,14 @@ window.onload = function() {
 			console.log(data)
 		}
 	});
+=======
+	//	$.ajax({
+	//		type:"post",
+	//		url:apiHost+"/appWarehouse/getWarehouses",
+	//		async:true
+	//	});
+
+>>>>>>> 678b8ae4baf835a4fa04e6fd8b8555457e80d0f7
 	//点击单选框
 	clickRadio()
 	//点击添加细项

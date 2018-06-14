@@ -10,11 +10,11 @@ window.onload = function() {
 	$("button").click(function() {
 		save()
 	})
-	$.ajax({
-		type:"post",
-		url:apiHost+"/appWarehouse/getWarehouses",
-		async:true
-	});
+//	$.ajax({
+//		type:"post",
+//		url:apiHost+"/appWarehouse/getWarehouses",
+//		async:true
+//	});
 
 };
 var hxArr = window.location.hash.length > 0 ? window.location.hash.substring(1).split("+") : []
