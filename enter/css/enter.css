@@ -1,4 +1,4 @@
-body,
+﻿body,
 html {
   margin: 0;
   padding: 0;
@@ -105,18 +105,21 @@ html .bodyCon .row .selectorBox select {
   width: 100%;
   text-align: right;
   direction: rtl;
+  background:rgba(0,0,0,0);
 }
 body .bodyCon .row .selectorBox select option,
 html .bodyCon .row .selectorBox select option {
   font-size: .25rem;
   width: 2rem;
+  background:rgba(0,0,0,0);
 }
 body .bodyCon .row .selectorBox input,
 html .bodyCon .row .selectorBox input {
   border: none;
   height: 1rem;
   width: 100%;
-  text-align: left;
+  text-align: right;
+  background:rgba(0,0,0,0);
 }
 body .bodyCon .row .selectorBox textarea,
 html .bodyCon .row .selectorBox textarea {
@@ -124,6 +127,7 @@ html .bodyCon .row .selectorBox textarea {
   border: none;
   width: 100%;
   max-height: 1.5rem;
+  background:rgba(0,0,0,0);
 }
 body .bodyCon .checkBox,
 html .bodyCon .checkBox {
