@@ -12,7 +12,7 @@ window.onload = function() {
 	//		url:apiHost+"/appWarehouse/getWarehouses",
 	//		async:true
 	//	});
-	
+
 	//点击单选框
 	clickRadio()
 
@@ -24,10 +24,10 @@ var userId = hxArr[1]
 function clickRadio() {
 
 	$('.check').click(function() {
-		
+
 		$('.check img').attr('src', 'img/mind_login_n@3x.png')
 		$('.check').attr('type', '0');
-		
+
 		$(this).find('img').attr('src', 'img/mind_login_h@3x.png');
 		$(this).attr('type', '1');
 	})
