@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>出库单</title>
+		<link href="https://cdn.bootcss.com/Swiper/4.3.0/css/swiper.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/enter.css" />
+		<script src="https://cdn.bootcss.com/Swiper/4.3.0/js/swiper.min.js"></script>
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+		<script src="js/addOutBound.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div class="title">
+			<div class="leftIcon">
+				<img src="img/return_nav_n@3x.png" />
+			</div>
+			<div class="con">
+				出库单
+			</div>
+		</div>
+		<div class="bodyCon">
+			<div class="row">
+				<div class="fontBox">
+					发货仓库：
+				</div>
+				<div class="selectorBox">
+					<select name="" class="contractUser">
+						<option value="">请选择</option>
+					</select>
+				</div>
+				<div class="rightIcon">
+					<img src="img/next_security_n@3x.png" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="fontBox">
+					供应商：
+				</div>
+				<div class="selectorBox">
+					<select name="" class="contractId">
+						<option value="">请选择</option>
+					</select>
+				</div>
+				<div class="rightIcon">
+					<img src="img/next_security_n@3x.png" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="fontBox">
+					物资科目：
+				</div>
+				<div class="selectorBox">
+					<select name="" class="subjectId">
+						<option value="">请选择</option>
+					</select>
+				</div>
+				<div class="rightIcon">
+					<img src="img/next_security_n@3x.png" />
+				</div>
+			</div>
+			<div class="checkBox">
+				<div class="check">
+					<div class="checkImg">
+						<img src="img/mind_login_h@3x.png" />
+					</div>
+					房屋建筑物
+				</div>
+				<div class="check">
+					<div class="checkImg">
+						<img src="img/mind_login_n@3x.png" />
+					</div>
+					机械设备
+				</div>
+				<div class="check">
+					<div class="checkImg">
+						<img src="img/mind_login_n@3x.png" />
+					</div>
+					器具家居工具
+				</div>
+			</div>
+			<div class="marginLing"></div>
+			<div class="enterCon">
+				<div class="entTitle">
+					<div class="leftCon">
+						入库明细
+					</div>
+					<div class="rightCon">
+						<img src="img/add_detail_n@3x.png" />添加明细
+					</div>
+				</div>
+				<div class="entTable">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide leftTable">
+							<div class="tableBox">
+								材料名称
+							</div>
+							<div class="tableBox Name" dataName="水泥">
+								水泥
+							</div>
+						</div>
+						<div class="swiper-slide leftTable">
+							<div class="tableBox">
+								规格型号
+							</div>
+							<div class="tableBox category" dataCategory="5-10">
+								5-10
+							</div>
+						</div>
+						<!--<div class="swiper-slide">
+							<div class="tableBox">
+								单位
+							</div>
+							<div class="tableBox">
+								吨
+							</div>
+						</div>-->
+						<div class="swiper-slide">
+							<div class="tableBox">
+								数量
+							</div>
+							<div class="tableBox number" dataNumbers="200">
+								200
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="tableBox">
+								库存量
+							</div>
+							<div class="tableBox">
+								200
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="marginLing"></div>
+			<div class="row">
+				<div class="fontBox">
+					收料人：
+				</div>
+				<div class="selectorBox">
+					<input type="text" readonly="" name="" id="" value="本人" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="fontBox">
+					材料用途：
+				</div>
+				<div class="selectorBox">
+					<input type="text" name="" id="" value="" placeholder="请输入材料用途" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="fontBox">
+					使用部位：
+				</div>
+				<div class="selectorBox">
+					<input type="text" name="" id="" value="" placeholder="请输入使用单位" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="fontBox">
+					领用单位：
+				</div>
+				<div class="selectorBox">
+					<input type="text" name="" id="" value="" placeholder="请输入领用单位" />
+				</div>
+			</div>
+			<div class="row" style="border: none;">
+				<div class="fontBox">
+					备注：
+				</div>
+				<div class="selectorBox">
+					<textarea name="" rows="20" cols="30" placeholder="请输入..."></textarea>
+				</div>
+			</div>
+			<div class="btnBox">
+				<button class="btn">提交</button>
+			</div>
+		</div>
+	</body>
+
+</html>

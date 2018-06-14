@@ -1,0 +1,232 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+body .marginLing,
+html .marginLing {
+  height: .2rem;
+  width: 100%;
+  background: #F4F4F4;
+}
+body .title,
+html .title {
+  height: .9rem;
+  width: 100%;
+  background-color: #F16412;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+}
+body .title .leftIcon,
+html .title .leftIcon {
+  position: absolute;
+  left: .5rem;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  height: .9rem;
+}
+body .title .leftIcon img,
+html .title .leftIcon img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  height: 40%;
+}
+body .title .con,
+html .title .con {
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: .35rem;
+  line-height: .9rem;
+  font-family: "微软雅黑";
+}
+body .bodyCon,
+html .bodyCon {
+  height: 100%;
+  padding-top: .9rem;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+body .bodyCon .row,
+html .bodyCon .row {
+  width: 100%;
+  padding: .15rem 0;
+  margin-left: .3rem;
+  font-size: .28rem;
+  line-height: 1.2rem;
+  min-height: 1.2rem;
+  text-align: left;
+  color: black;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  position: relative;
+}
+body .bodyCon .row:last-child,
+html .bodyCon .row:last-child {
+  border-bottom: none;
+}
+body .bodyCon .row .fontBox,
+html .bodyCon .row .fontBox {
+  width: 20%;
+}
+body .bodyCon .row .rightIcon,
+html .bodyCon .row .rightIcon {
+  width: 10%;
+  height: 28%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: .2rem;
+  margin: auto 0;
+}
+body .bodyCon .row .rightIcon img,
+html .bodyCon .row .rightIcon img {
+  height: 60%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+body .bodyCon .row .selectorBox,
+html .bodyCon .row .selectorBox {
+  width: 65%;
+  float: right;
+}
+body .bodyCon .row .selectorBox select,
+html .bodyCon .row .selectorBox select {
+  -webkit-appearance: none;
+  border: none;
+  height: 1rem;
+  width: 100%;
+  text-align: right;
+  direction: rtl;
+}
+body .bodyCon .row .selectorBox select option,
+html .bodyCon .row .selectorBox select option {
+  font-size: .25rem;
+  width: 2rem;
+}
+body .bodyCon .row .selectorBox input,
+html .bodyCon .row .selectorBox input {
+  border: none;
+  height: 1rem;
+  width: 100%;
+  text-align: right;
+}
+body .bodyCon .row .selectorBox textarea,
+html .bodyCon .row .selectorBox textarea {
+  margin-top: .45rem;
+  border: none;
+  width: 100%;
+  max-height: 1.5rem;
+}
+body .bodyCon .checkBox,
+html .bodyCon .checkBox {
+  width: 100%;
+  padding: .5rem .4rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+body .bodyCon .checkBox .check,
+html .bodyCon .checkBox .check {
+  flex-grow: 1;
+  font-size: .28rem;
+  line-height: .28rem;
+}
+body .bodyCon .checkBox .check .checkImg,
+html .bodyCon .checkBox .check .checkImg {
+  height: .28rem;
+  margin-right: .1rem;
+  float: left;
+}
+body .bodyCon .checkBox .check .checkImg img,
+html .bodyCon .checkBox .check .checkImg img {
+  height: 100%;
+}
+body .bodyCon .enterCon,
+html .bodyCon .enterCon {
+  width: 100%;
+  padding: .3rem;
+  box-sizing: border-box;
+}
+body .bodyCon .enterCon .entTitle,
+html .bodyCon .enterCon .entTitle {
+  overflow: hidden;
+}
+body .bodyCon .enterCon .entTitle .leftCon,
+html .bodyCon .enterCon .entTitle .leftCon {
+  float: left;
+  font-size: .3rem;
+  color: black;
+}
+body .bodyCon .enterCon .entTitle .rightCon,
+html .bodyCon .enterCon .entTitle .rightCon {
+  float: right;
+  color: #38ADFF;
+  font-size: .3rem;
+  line-height: .3rem;
+  position: relative;
+}
+body .bodyCon .enterCon .entTitle .rightCon img,
+html .bodyCon .enterCon .entTitle .rightCon img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -30%;
+  margin: auto 0;
+  height: .3rem;
+  margin-right: .1rem;
+}
+body .bodyCon .enterCon .entTable,
+html .bodyCon .enterCon .entTable {
+  margin: .2rem 0;
+  overflow: hidden;
+  width: 100%;
+}
+body .bodyCon .enterCon .entTable:after,
+html .bodyCon .enterCon .entTable:after {
+  content: span;
+  clear: both;
+}
+body .bodyCon .enterCon .entTable .tableBox,
+html .bodyCon .enterCon .entTable .tableBox {
+  padding: .2rem;
+  width: 100%;
+  text-align: center;
+  border: 1px solid #FDD5BD;
+  box-sizing: border-box;
+  float: left;
+  font-size: .3rem;
+}
+body .bodyCon .enterCon .entTable .leftTable .tableBox,
+html .bodyCon .enterCon .entTable .leftTable .tableBox {
+  background-color: #FFE7D8;
+}
+body .bodyCon .enterCon .entTable .swiper-slide,
+html .bodyCon .enterCon .entTable .swiper-slide {
+  font-size: .2rem;
+}
+body .bodyCon .btnBox,
+html .bodyCon .btnBox {
+  width: 100%;
+  padding: .3rem;
+  box-sizing: border-box;
+  background-color: #F4F4F4;
+}
+body .bodyCon .btnBox .btn,
+html .bodyCon .btnBox .btn {
+  width: 100%;
+  height: .8rem;
+  border: none;
+  background: #F16412;
+  color: white;
+  font-size: .35rem;
+  border-radius: .1rem;
+  margin: auto;
+}
