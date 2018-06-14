@@ -4,32 +4,51 @@ window.onload = function() {
 		autoHeight: true,
 		slidesPerView: 4,
 	})
+
+	var hxArr = window.location.hash.length > 0 ? window.location.hash.substring(1).split("+") : []
+	var apiHost = hxArr[0]
+	var userId = hxArr[1]
+
 	$("button").click(function() {
 		save()
 	})
-	//	$.ajax({
-	//		type:"post",
-	//		url:apiHost+"/appWarehouse/getWarehouses",
-	//		async:true
-	//	});
-	
+	$.ajax({
+		type: "get",
+		url: "http://172.18.0.10:8083/erchu/appWarehouse/getWarehouses",
+		data: {
+			'uid': '1'
+		},
+		async: true,
+		success: function(data) {
+			console.log(data)
+		},
+		error: function(data) {
+			console.log(data)
+		}
+	});
 	//点击单选框
 	clickRadio()
+	//点击添加细项
+	addItem()
 
 };
-var hxArr = window.location.hash.length > 0 ? window.location.hash.substring(1).split("+") : []
-var apiHost = hxArr[0]
-var userId = hxArr[1]
 
 function clickRadio() {
 
 	$('.check').click(function() {
-		
+
 		$('.check img').attr('src', 'img/mind_login_n@3x.png')
 		$('.check').attr('type', '0');
-		
+
 		$(this).find('img').attr('src', 'img/mind_login_h@3x.png');
 		$(this).attr('type', '1');
+	})
+}
+
+function addItem() {
+
+	$('#addItem').click(function() {
+		window.location.href = "chuku_specificPoint.html";
 	})
 }
 
