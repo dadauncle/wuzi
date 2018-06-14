@@ -27,6 +27,9 @@ html .title .leftIcon {
   bottom: 0;
   margin: auto 0;
   height: .9rem;
+  font-size: .3rem;
+  color: white;
+  line-height: .9rem;
 }
 body .title .leftIcon img,
 html .title .leftIcon img {
@@ -44,6 +47,9 @@ html .title .rightIcon {
   bottom: 0;
   margin: auto 0;
   height: .9rem;
+  font-size: .3rem;
+  color: white;
+  line-height: .9rem;
 }
 body .title .rightIcon img,
 html .title .rightIcon img {
