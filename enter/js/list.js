@@ -8,8 +8,8 @@ window.onload = function() {
 var hxArr = window.location.hash.length > 0
   ? window.location.hash.substring(1).split("+")
   : []
-var apiHost = hxArr[0]
-var userId = hxArr[1]
+var apiHost = hxArr[0]||"http://172.18.0.10:8083";
+var userId = hxArr[1]|| "1";
 sessionStorage.setItem("apiHost",apiHost)
 sessionStorage.setItem("userId",userId)
 var pageCode = 0;

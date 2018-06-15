@@ -12,8 +12,8 @@ window.onload = function() {
 		save()
 	})
 };
-var apiHost = sessionStorage.getItem(apiHost)
-var userId = sessionStorage.getItem(userId)
+var apiHost = sessionStorage.getItem("apiHost")
+var userId = sessionStorage.getItem("userId")
 
 //获取所有仓库
 function getHouse () {
@@ -44,6 +44,7 @@ function getHouse () {
 	var parms={
 		uid:userId
 	}
+	console.log(apiHost)
 	$.ajax({
 		type:"post",
 		data:parms,
@@ -68,6 +69,7 @@ function getMaterialSubjects () {
 	var parms={
 		uid:userId
 	}
+	console.log(apiHost)
 	$.ajax({
 		type:"post",
 		data:parms,
