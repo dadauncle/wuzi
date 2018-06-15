@@ -252,7 +252,7 @@ function save() {
 
 	$.ajax({
 		type: "post",
-		url: apiHost + "/appInStorage/save:",
+		url: apiHost + "/appInStorage/save",
 		data: parms,
 		success: function(rdata) {
 			if(rdata.success) {
