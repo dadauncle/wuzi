@@ -6,35 +6,66 @@ window.onload = function() {
 	})
 
 	var hxArr = window.location.hash.length > 0 ? window.location.hash.substring(1).split("+") : []
-	var apiHost = hxArr[0]
-	var userId = hxArr[1]
+	var apiHost = hxArr[0] || "http://172.18.0.10:8083"
+	var userId = hxArr[1] || "1"
 
 	$("button").click(function() {
 		save()
 	})
-<<<<<<< HEAD
+	//获取仓库列表
 	$.ajax({
 		type: "get",
-		url: "http://172.18.0.10:8083/erchu/appWarehouse/getWarehouses",
+		url: apiHost + "/erchu/appWarehouse/getWarehouses",
 		data: {
-			'uid': '1'
+			'uid': userId
 		},
 		async: true,
 		success: function(data) {
-			console.log(data)
+			console.log(data);
+			//渲染仓库
+			var info = data.data;
+			renderWarehouse(info)
 		},
 		error: function(data) {
 			console.log(data)
 		}
 	});
-=======
-	//	$.ajax({
-	//		type:"post",
-	//		url:apiHost+"/appWarehouse/getWarehouses",
-	//		async:true
-	//	});
-
->>>>>>> 678b8ae4baf835a4fa04e6fd8b8555457e80d0f7
+	//获取供应商
+	$.ajax({
+		type: "get",
+		url: apiHost + "/erchu/appContractParty/queryByType",
+		data: {
+			'uid': userId
+		},
+		async: true,
+		success: function(data) {
+			console.log(data);
+			//渲染仓库
+			var info = data.data;
+			renderSupplier(info)
+		},
+		error: function(data) {
+			console.log(data)
+		}
+	});
+	//获取物资科目
+	$.ajax({
+		type: "get",
+		url: apiHost + "/erchu/appDictionary/getMaterialSubjects",
+		data: {
+			'uid': userId
+		},
+		async: true,
+		success: function(data) {
+			console.log(data);
+			//渲染仓库
+			var info = data.data;
+			renderSubjects(info)
+		},
+		error: function(data) {
+			console.log(data)
+		}
+	});
 	//点击单选框
 	clickRadio()
 	//点击添加细项
@@ -58,6 +89,36 @@ function addItem() {
 
 	$('#addItem').click(function() {
 		window.location.href = "chuku_specificPoint.html";
+	})
+}
+
+function renderWarehouse(info) {
+	var html = '';
+	$.each(info || [], function(index, ele) {
+		html += '<option value="' + ele.WAREHOUSE_ID + '">' + ele.NAME + '</option>';
+	})
+	$('#warehouse').append(html);
+}
+
+function renderSupplier(info) {
+	var html = '';
+	$.each(info || [], function(index, ele) {
+		html += '<option value="' + ele.CONTRACT_PARTY_ID + '">' + ele.NAME + '</option>';
+	})
+	$('#supplier').append(html);
+}
+
+function renderSubjects(info) {
+	var html = '';
+	$.each(info || [], function(index, ele) {
+		html += '<option value="' + ele.bianma + '">' + ele.name + '</option>';
+	})
+	$('#subjects').append(html);
+	$('#subjects').on('change',function(){
+		$('.checkBox').css('display','none');
+		if($(this).val()=='02401'){
+			$('.checkBox').css('display','flex');
+		}
 	})
 }
 

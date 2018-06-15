@@ -8,10 +8,6 @@
 		<title>出库单</title>
 		<link href="https://cdn.bootcss.com/Swiper/4.3.0/css/swiper.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/enter.css" />
-		<script src="https://cdn.bootcss.com/Swiper/4.3.0/js/swiper.min.js"></script>
-		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://cdn.bootcss.com/jQuery-JSONP/2.4.0/jquery.jsonp.js"></script>
-		<script src="js/addOutBound.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
 	<body>
@@ -29,7 +25,7 @@
 					发货仓库：
 				</div>
 				<div class="selectorBox">
-					<select name="" class="contractUser">
+					<select name="" class="contractUser" id="warehouse">
 						<option value="">请选择</option>
 					</select>
 				</div>
@@ -42,7 +38,7 @@
 					供应商：
 				</div>
 				<div class="selectorBox">
-					<select name="" class="contractId">
+					<select name="" class="contractId" id="supplier">
 						<option value="">请选择</option>
 					</select>
 				</div>
@@ -55,7 +51,7 @@
 					物资科目：
 				</div>
 				<div class="selectorBox">
-					<select name="" class="subjectId">
+					<select name="" class="subjectId" id="subjects">
 						<option value="">请选择</option>
 					</select>
 				</div>
@@ -63,7 +59,7 @@
 					<img src="img/next_security_n@3x.png" />
 				</div>
 			</div>
-			<div class="checkBox">
+			<div class="checkBox" style="display: none;">
 				<div class="check">
 					<div class="checkImg">
 						<img src="img/mind_login_h@3x.png" />
@@ -185,5 +181,9 @@
 			</div>
 		</div>
 	</body>
+	<script src="https://cdn.bootcss.com/Swiper/4.3.0/js/swiper.min.js"></script>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/jQuery-JSONP/2.4.0/jquery.jsonp.js"></script>
+	<script src="js/addOutBound.js" type="text/javascript" charset="utf-8"></script>
 
 </html>
