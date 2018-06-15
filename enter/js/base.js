@@ -8,5 +8,11 @@ function getRem(pwidth, prem) {
 	html.style.fontSize = oWidth / pwidth * prem + "px";
 }
 window.onload=function() {
+	$(".leftIcon").click(function(){
+		back()
+	})
 	getRem(750, 100)
+}
+function back () {
+	history.go(-1)
 }

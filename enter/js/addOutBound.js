@@ -4,7 +4,9 @@ window.onload = function() {
 		autoHeight: true,
 		slidesPerView: 4,
 	})
-
+	$(".leftIcon").click(function(){
+		back()
+	})
 	var hxArr = window.location.hash.length > 0 ? window.location.hash.substring(1).split("+") : []
 
 	var apiHost = sessionStorage.getItem("apiHost")
@@ -72,7 +74,9 @@ window.onload = function() {
 	addItem()
 
 };
-
+function back () {
+	history.go(-1)
+}
 function clickRadio() {
 
 	$('.check').click(function() {
