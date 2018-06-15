@@ -7,7 +7,6 @@ window.onload = function() {
 	$(".leftIcon").click(function(){
 		back()
 	})
-	var hxArr = window.location.hash.length > 0 ? window.location.hash.substring(1).split("+") : []
 
 	var apiHost = sessionStorage.getItem("apiHost")
 	var userId = sessionStorage.getItem("userId")
