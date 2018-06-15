@@ -6,8 +6,9 @@ window.onload = function() {
 	})
 
 	var hxArr = window.location.hash.length > 0 ? window.location.hash.substring(1).split("+") : []
-	var apiHost = hxArr[0] || "http://172.18.0.10:8083"
-	var userId = hxArr[1] || "1"
+
+	var apiHost = sessionStorage.getItem(apiHost)
+	var userId = sessionStorage.getItem(userId)
 
 	$("button").click(function() {
 		save()
@@ -15,7 +16,7 @@ window.onload = function() {
 	//获取仓库列表
 	$.ajax({
 		type: "get",
-		url: apiHost + "/erchu/appWarehouse/getWarehouses",
+		url: apiHost + "/appWarehouse/getWarehouses",
 		data: {
 			'uid': userId
 		},
@@ -33,7 +34,7 @@ window.onload = function() {
 	//获取供应商
 	$.ajax({
 		type: "get",
-		url: apiHost + "/erchu/appContractParty/queryByType",
+		url: apiHost + "/appContractParty/queryByType",
 		data: {
 			'uid': userId
 		},
@@ -51,7 +52,7 @@ window.onload = function() {
 	//获取物资科目
 	$.ajax({
 		type: "get",
-		url: apiHost + "/erchu/appDictionary/getMaterialSubjects",
+		url: apiHost + "/appDictionary/getMaterialSubjects",
 		data: {
 			'uid': userId
 		},
@@ -114,44 +115,51 @@ function renderSubjects(info) {
 		html += '<option value="' + ele.bianma + '">' + ele.name + '</option>';
 	})
 	$('#subjects').append(html);
-	$('#subjects').on('change',function(){
-		$('.checkBox').css('display','none');
-		if($(this).val()=='02401'){
-			$('.checkBox').css('display','flex');
+	$('#subjects').on('change', function() {
+		$('.checkBox').css('display', 'none');
+		if($(this).val() == '02401') {
+			$('.checkBox').css('display', 'flex');
 		}
 	})
 }
 
 function save() {
+	
 	var parms = {
-		uid: userId,
-		reciveUserId: userId,
-		submitUserId: userId,
-		materialIds: [],
-		materialCategoryIds: [],
-		numbers: []
+		"uid": "1",
+		"positionId": "1",
+		"partBId": "1",
+		"subjectId": "1",
+		"purpose": "1",
+		"userPart": "1",
+		"company": "1",
+		"outUserId":"",
+		"materialIds": [],
+		"materialCategoryIds": [],
+		"numbers": []
 	}
 
-	if($("contractId").val() && $("contractId").val() != "") {
-		parms.contractId = $("contractId").val()
+	if($("#warehouse").val() && $("#warehouse").val() != "") {
+		parms.positionId = $("#warehouse").val()
 	} else {
-		alert("请选择合同")
+		alert("请选择发货仓库")
 		return
 	}
 
-	if($("subjectId	").val() && $("subjectId	").val() != "") {
-		parms.subjectId = $("subjectId	").val()
+	if($("#supplier").val() && $("#supplier").val() != "") {
+		parms.partBId = $("#supplier").val()
+	} else {
+		alert("请选择供应商")
+		return
+	}
+
+	if($("#subjects").val() && $("#subjects").val() != "") {
+		parms.subjectId = $("#subjects").val()
 	} else {
 		alert("请选择物资科目")
 		return
 	}
 
-	if($("positionId").val() && $("positionId").val() != "") {
-		parms.positionId = $("positionId").val()
-	} else {
-		alert("请选择存储位置")
-		return
-	}
 	$(".Name").each(function(index, val) {
 		parms.materialIds.push(val.attr("dataName"))
 	})
