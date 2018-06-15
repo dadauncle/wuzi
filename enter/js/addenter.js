@@ -259,8 +259,8 @@ function save() {
 				alert("提交成功")
 				history.go(-1);
 			} else {
-				alert("提交失败请稍后重试")
-				$("button").css('background-color', "#F4F4F4")
+				alert(rdata.message)
+				$("button").css('background-color', "#F16412")
 				$("button").click(function() {
 					save()
 				})
@@ -268,7 +268,7 @@ function save() {
 		},
 		error: function(err) {
 			alert("提交失败请稍后重试");
-			$("button").css('background-color', "#F4F4F4")
+			$("button").css('background-color', "#F16412")
 			$("button").click(function() {
 				save()
 			})

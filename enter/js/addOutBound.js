@@ -4,7 +4,7 @@ window.onload = function() {
 		autoHeight: true,
 		slidesPerView: 4,
 	})
-	$(".leftIcon").click(function(){
+	$(".leftIcon").click(function() {
 		back()
 	})
 
@@ -16,7 +16,7 @@ window.onload = function() {
 	//获取仓库列表
 	$.ajax({
 		type: "get",
-		url: apiHost+"/appWarehouse/getWarehouses",
+		url: apiHost + "/appWarehouse/getWarehouses",
 		data: {
 			'uid': userId
 		},
@@ -73,9 +73,11 @@ window.onload = function() {
 	addItem()
 
 };
-function back () {
+
+function back() {
 	history.go(-1)
 }
+
 function clickRadio() {
 
 	$('.check').click(function() {
@@ -126,16 +128,19 @@ function renderSubjects(info) {
 }
 
 function save() {
+	var apiHost = sessionStorage.getItem("apiHost")
+	var userId = sessionStorage.getItem("userId")
 	
 	var parms = {
 		"uid": userId,
-		"positionId": "1",
-		"partBId": "1",
-		"subjectId": "1",
-		"purpose": "1",
-		"userPart": "1",
-		"company": "1",
-		"outUserId":userId,
+		"positionId": "",
+		"partBId": "",
+		"subjectId": "",
+		"purpose": "",
+		"userPart": "",
+		"company": "",
+		"outUserId": userId,
+		"remark": "",
 		"materialIds": [],
 		"materialCategoryIds": [],
 		"numbers": []
@@ -161,11 +166,11 @@ function save() {
 		alert("请选择物资科目")
 		return
 	}
-	
+
 	if($("#materialUsage").val() && $("#materialUsage").val() != "") {
 		parms.purpose = $("#materialUsage").val()
 	} else {
-		alert("请选择材料用途")
+		alert("请填入材料用途")
 		return
 	}
 	if($("#useParts").val() && $("#useParts").val() != "") {
@@ -177,18 +182,21 @@ function save() {
 	if($("#company").val() && $("#company").val() != "") {
 		parms.company = $("#company").val()
 	} else {
-		alert("请选择物资科目")
+		alert("请填入领用单位")
 		return
 	}
+
+	parms.remark = $("#remark").val();//备注
 	
+	console.log(parms);
 	$(".Name").each(function(index, val) {
-		parms.materialIds.push(val.attr("dataName"))
+		parms.materialIds.push($(this).attr("dataName"))
 	})
 	$(".category").each(function(index, val) {
-		parms.materialCategoryIds.push(val.attr("dataCategory"))
+		parms.materialCategoryIds.push($(this).attr("dataCategory"))
 	})
 	$(".number").each(function(index, val) {
-		parms.numbers.push(val.attr("dataNumbers"))
+		parms.numbers.push($(this).attr("dataNumbers"))
 	})
 
 	$("button").css('background-color', "#CCCCCC")
@@ -205,8 +213,8 @@ function save() {
 				alert("提交成功")
 				history.go(-1);
 			} else {
-				alert("提交失败请稍后重试")
-				$("button").css('background-color', "#F4F4F4")
+				alert(rdata.message)
+				$("button").css('background-color', "#F16412")
 				$("button").click(function() {
 					save()
 				})
@@ -214,7 +222,7 @@ function save() {
 		},
 		error: function(err) {
 			alert("提交失败请稍后重试");
-			$("button").css('background-color', "#F4F4F4")
+			$("button").css('background-color', "#F16412")
 			$("button").click(function() {
 				save()
 			})
