@@ -4,18 +4,21 @@ window.onload = function() {
 		autoHeight: true,
 		slidesPerView: 4,
 	})
-
+	$(".leftIcon").click(function(){
+		back()
+	})
 	var hxArr = window.location.hash.length > 0 ? window.location.hash.substring(1).split("+") : []
-	var apiHost = hxArr[0] || "http://172.18.0.10:8083"
-	var userId = hxArr[1] || "1"
-
+//	var apiHost = hxArr[0] || "http://172.18.0.10:8083"
+//	var userId = hxArr[1] || "1"
+var apiHost = sessionStorage.getItem("apiHost")
+var userId = sessionStorage.getItem("userId")
 	$("button").click(function() {
 		save()
 	})
 	//获取仓库列表
 	$.ajax({
 		type: "get",
-		url: apiHost + "/erchu/appWarehouse/getWarehouses",
+		url: apiHost + "/appWarehouse/getWarehouses",
 		data: {
 			'uid': userId
 		},
@@ -33,7 +36,7 @@ window.onload = function() {
 	//获取供应商
 	$.ajax({
 		type: "get",
-		url: apiHost + "/erchu/appContractParty/queryByType",
+		url: apiHost + "/appContractParty/queryByType",
 		data: {
 			'uid': userId
 		},
@@ -51,7 +54,7 @@ window.onload = function() {
 	//获取物资科目
 	$.ajax({
 		type: "get",
-		url: apiHost + "/erchu/appDictionary/getMaterialSubjects",
+		url: apiHost + "/appDictionary/getMaterialSubjects",
 		data: {
 			'uid': userId
 		},
@@ -72,7 +75,9 @@ window.onload = function() {
 	addItem()
 
 };
-
+function back () {
+	history.go(-1)
+}
 function clickRadio() {
 
 	$('.check').click(function() {

@@ -4,14 +4,75 @@ window.onload = function() {
 		autoHeight: true,
 		slidesPerView: 4,
 	})
+	$(".leftIcon").click(function(){
+		back()
+	})
 	//点击单选框
 	clickRadio()
-//	getHouse()
-	getMaterialSubjects()
+	addItem()
 	$("button").click(function() {
 		save()
 	})
+	//获取仓库列表
+	$.ajax({
+		type: "get",
+		url: apiHost + "/appWarehouse/getWarehouses",
+		data: {
+			'uid': userId
+		},
+		async: true,
+		success: function(data) {
+			console.log(data);
+			//渲染仓库
+			var info = data.data;
+			renderWarehouse(info)
+		},
+		error: function(data) {
+			console.log(data)
+		}
+	});
+	//获取供应商
+	$.ajax({
+		type: "get",
+		url: apiHost + "/appContractParty/queryByType",
+		data: {
+			'uid': userId
+		},
+		async: true,
+		success: function(data) {
+			console.log(data);
+			//渲染仓库
+			var info = data.data;
+			renderSupplier(info)
+		},
+		error: function(data) {
+			console.log(data)
+		}
+	});
+	//获取物资科目
+	$.ajax({
+		type: "get",
+		url: apiHost + "/appDictionary/getMaterialSubjects",
+		data: {
+			'uid': userId
+		},
+		async: true,
+		success: function(data) {
+			console.log(data);
+			//渲染仓库
+			var info = data.data;
+			renderSubjects(info)
+		},
+		error: function(data) {
+			console.log(data)
+		}
+	});
 };
+
+function back () {
+	history.go(-1)
+}
+
 var apiHost = sessionStorage.getItem("apiHost")
 var userId = sessionStorage.getItem("userId")
 
@@ -88,6 +149,45 @@ function getMaterialSubjects () {
 	});
 	
 }
+
+
+function addItem() {
+
+	$('#addItem').click(function() {
+		window.location.href = "ruku_specificPoint.html";
+	})
+}
+// 渲染仓库
+function renderWarehouse(info) {
+	var html = '';
+	$.each(info || [], function(index, ele) {
+		html += '<option value="' + ele.WAREHOUSE_ID + '">' + ele.NAME + '</option>';
+	})
+	$('.positionId').append(html);
+}
+//渲染供应商
+function renderSupplier(info) {
+	var html = '';
+	$.each(info || [], function(index, ele) {
+		html += '<option value="' + ele.CONTRACT_PARTY_ID + '">' + ele.NAME + '</option>';
+	})
+	$('.contractUser').append(html);
+}
+//渲染物资科目
+function renderSubjects(info) {
+	var html = '';
+	$.each(info || [], function(index, ele) {
+		html += '<option value="' + ele.bianma + '">' + ele.name + '</option>';
+	})
+	$('.subjectId').append(html);
+	$('.subjectId').on('change',function(){
+		$('.checkBox').css('display','none');
+		if($(this).val()=='02401'){
+			$('.checkBox').css('display','flex');
+		}
+	})
+}
+
 
 
 //点击单选
