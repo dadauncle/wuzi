@@ -6,20 +6,87 @@ window.onload = function() {
 	})
 	//点击单选框
 	clickRadio()
-
+//	getHouse()
+	getMaterialSubjects()
 	$("button").click(function() {
 		save()
 	})
+};
+var apiHost = sessionStorage.getItem(apiHost)
+var userId = sessionStorage.getItem(userId)
+
+//获取所有仓库
+function getHouse () {
+	var parms={
+		uid:userId
+	}
 	$.ajax({
 		type:"post",
+		data:parms,
 		url:apiHost+"/appWarehouse/getWarehouses",
-		async:true
+		success:function(rdata){
+			console.log(rdata)
+			var data=rdata.data
+			var html='<option value="">请选择</option>'
+			for (var i = 0; i < data.length; i++) {
+				html+=`
+					<option value="${data[i].WAREHOUSE_ID}">${data[i].NAME}</option>
+				`
+			}
+			$(".positionId").html(html)
+		}
 	});
+	
+}
 
-};
-var hxArr = window.location.hash.length > 0 ? window.location.hash.substring(1).split("+") : []
-var apiHost = hxArr[0]
-var userId = hxArr[1]
+//获取供应商
+function getHouse () {
+	var parms={
+		uid:userId
+	}
+	$.ajax({
+		type:"post",
+		data:parms,
+		url:apiHost+"/appDictionary/getMaterialSubjects",
+		success:function(rdata){
+			console.log(rdata)
+			var data=rdata.data
+			var html='<option value="">请选择</option>'
+			for (var i = 0; i < data.length; i++) {
+				html+=`
+					<option value="${data[i].WAREHOUSE_ID}">${data[i].NAME}</option>
+				`
+			}
+			$(".positionId").html(html)
+		}
+	});
+	
+}
+
+//获取物资科目
+function getMaterialSubjects () {
+	var parms={
+		uid:userId
+	}
+	$.ajax({
+		type:"post",
+		data:parms,
+		url:apiHost+"/appDictionary/getMaterialSubjects",
+		success:function(rdata){
+			console.log(rdata)
+			var data=rdata.data
+			var html='<option value="">请选择</option>'
+			for (var i = 0; i < data.length; i++) {
+				html+=`
+					<option value="${data[i].bianma}">${data[i].name}</option>
+				`
+			}
+			$(".subjectId").html(html)
+		}
+	});
+	
+}
+
 
 //点击单选
 

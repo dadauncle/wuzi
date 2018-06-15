@@ -1,6 +1,6 @@
 window.onload = function() {
   getRem(750, 100)
-  apiHost = "http://172.18.0.10:8083/erchu/"
+  addBtn()
 	getList(function(rdata) {
 			console.log(rdata);
 	})
@@ -28,22 +28,31 @@ $(window).scroll(function() {
 })
 //获取list数据，滚动加载
 function getList( callback) {
-  pageCode + 1
-  pageSize + 10
+	apiHost = "http://172.18.0.10:8083/erchu";
+	userId=5;
+  pageCode += 1
+  pageSize += 10
 	var parms={
-		uid=uid,
+		uid:userId,
 		pageCode:pageCode,
 		pageSize:pageSize,
 	}
   $.ajax({
     type: "post",
-    url: apiHost + "/appWarehouse/getWarehouses",
-    success；function(rdata) {
-      console.log(rdata);
+    data:parms,
+    url: apiHost + "/appInStorage/list",
+    success:function(rdata) {
+    	console.log(parms)
 			callback(rdata)
     }
   });
 }
+function addBtn(){
+	$(".addBtnBox").click(function () {
+		location.href="addenter.html"
+	})
+}
+
 window.onresize = function() {
   getRem(750, 100)
 };
