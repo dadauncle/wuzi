@@ -7,16 +7,15 @@ window.onload = function() {
 
 	var hxArr = window.location.hash.length > 0 ? window.location.hash.substring(1).split("+") : []
 
-	var apiHost = sessionStorage.getItem(apiHost)
-	var userId = sessionStorage.getItem(userId)
-
+	var apiHost = sessionStorage.getItem("apiHost")
+	var userId = sessionStorage.getItem("userId")
 	$("button").click(function() {
 		save()
 	})
 	//获取仓库列表
 	$.ajax({
 		type: "get",
-		url: apiHost + "/appWarehouse/getWarehouses",
+		url: apiHost+"/appWarehouse/getWarehouses",
 		data: {
 			'uid': userId
 		},
@@ -126,14 +125,14 @@ function renderSubjects(info) {
 function save() {
 	
 	var parms = {
-		"uid": "1",
+		"uid": userId,
 		"positionId": "1",
 		"partBId": "1",
 		"subjectId": "1",
 		"purpose": "1",
 		"userPart": "1",
 		"company": "1",
-		"outUserId":"",
+		"outUserId":userId,
 		"materialIds": [],
 		"materialCategoryIds": [],
 		"numbers": []
@@ -159,15 +158,34 @@ function save() {
 		alert("请选择物资科目")
 		return
 	}
-
+	
+	if($("#materialUsage").val() && $("#materialUsage").val() != "") {
+		parms.purpose = $("#materialUsage").val()
+	} else {
+		alert("请选择材料用途")
+		return
+	}
+	if($("#useParts").val() && $("#useParts").val() != "") {
+		parms.userPart = $("#useParts").val()
+	} else {
+		alert("请填入使用部位")
+		return
+	}
+	if($("#company").val() && $("#company").val() != "") {
+		parms.company = $("#company").val()
+	} else {
+		alert("请选择物资科目")
+		return
+	}
+	
 	$(".Name").each(function(index, val) {
 		parms.materialIds.push(val.attr("dataName"))
 	})
 	$(".category").each(function(index, val) {
-		parms.materialIds.push(val.attr("dataCategory"))
+		parms.materialCategoryIds.push(val.attr("dataCategory"))
 	})
 	$(".number").each(function(index, val) {
-		parms.materialIds.push(val.attr("dataNumbers"))
+		parms.numbers.push(val.attr("dataNumbers"))
 	})
 
 	$("button").css('background-color', "#CCCCCC")
