@@ -7,40 +7,44 @@ window.onload = function() {
 
 	$('input,textarea').attr('readonly', 'readonly').css('outline', 'none')
 
-	var apiHost = sessionStorage.getItem("apiHost")||"http://172.18.0.10:8083/erchu"
-	var userId = sessionStorage.getItem("userId")||"1"
-	var outStorageId = sessionStorage.getItem("outStorageId")||"1"
+	var apiHost = sessionStorage.getItem("apiHost") || "http://172.18.0.10:8083/erchu"
+	var userId = sessionStorage.getItem("userId") || "1"
+	var outStorageId = sessionStorage.getItem("outStorageId") || "1"
 	//获取详情
 	getInfo()
-	function getInfo() {
-		$.ajax({
-			type: "get",
-			url: apiHost + "/appOutStorage/findById",
-			data: {
-				'uid': userId,
-				"outStorageId": outStorageId
-			},
-			async: true,
-			success: function(data) {
-				console.log(data);
-				//渲染详情
-				var info = data.data;
-				renderInfo(info)
-			},
-			error: function(data) {
-				console.log(data)
-			}
-		});
-	}
 };
+var apiHost = sessionStorage.getItem("apiHost")
+var userId = sessionStorage.getItem("userId")
+var outStorageId=sessionStorage.getItem("outStorageId")
+function getInfo() {
+	$.ajax({
+		type: "get",
+		url: apiHost + "/appOutStorage/findById",
+		data: {
+			'uid': userId,
+			"outStorageId": outStorageId
+		},
+		async: true,
+		success: function(data) {
+			console.log(data);
+			//渲染详情
+			var info = data.data;
+			renderInfo(info)
+		},
+		error: function(data) {
+			console.log(data) 
+		}
+	});
+}
+
 $(".row").css({
 	border: "none",
 	padding: "0rem"
 })
 
 //渲染详情
-function renderInfo(info){
-	
+function renderInfo(info) {
+	$("")
 }
 window.onresize = function() {
 	getRem(750, 100)
